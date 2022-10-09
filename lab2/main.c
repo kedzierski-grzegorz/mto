@@ -1,12 +1,29 @@
 #include <stdio.h>
 #include <string.h>
 
+int is_length_limit_printf(char *format_string, int startIndex) {
+	if (!(format_string[startIndex] == '#' && format_string[startIndex+1] == '.'))
+		return 0;
+
+	for (int i = startIndex + 2; i < strlen(format_string); i++) {
+		if (!isdigit(format_string[i]) && format_string[i] != 'k') {
+			return 0;
+		}
+
+		if (i > startIndex + 2 && format_string[i] == 'k') {
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
 int my_printf(char *format_string, char *param){
 	for(int i=0;i<strlen(format_string);i++){
 		if((format_string[i] == '#') && (format_string[i+1] == 'k')){
 			i += 2;
 			printf("%s",param);
-		} if ((format_string[i] == '#') && (format_string[i+1] == '.') && isdigit(format_string[i+2]) && (format_string[i+3] == 'k')) {
+		} if (is_length_limit_printf(format_string, i)) {
 			char format[5];
 			sprintf(format, "%%.%cs", format_string[i+2]);
 			printf(format, param);
