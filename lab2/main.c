@@ -4,7 +4,7 @@
 int my_printf(char *format_string, char *param){
 	for(int i=0;i<strlen(format_string);i++){
 		if((format_string[i] == '#') && (format_string[i+1] == 'k')){
-			i++;
+			i += 2;
 			printf("%s",param);
 		} if ((format_string[i] == '#') && (format_string[i+1] == '.') && isdigit(format_string[i+2]) && (format_string[i+3] == 'k')) {
 			char format[5];
