@@ -6,7 +6,12 @@ int my_printf(char *format_string, char *param){
 		if((format_string[i] == '#') && (format_string[i+1] == 'k')){
 			i++;
 			printf("%s",param);
-		}else {
+		} if ((format_string[i] == '#') && (format_string[i+1] == '.') && isdigit(format_string[i+2]) && (format_string[i+3] == 'k')) {
+			char format[5];
+			sprintf(format, "%%.%cs", format_string[i+2]);
+			printf(format, param);
+			i += 3;
+		} else {
 			if (isalpha(format_string[i])) {
 				if (format_string[i] >= 65 && format_string[i] <= 90) {
 					putchar(format_string[i] + 32);
