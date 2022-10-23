@@ -1,21 +1,31 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
-int is_length_limit_printf(char *format_string, int startIndex) {
+int is_length_limit_printf(char *format_string, int startIndex, char *formatNumber) {
 	if (!(format_string[startIndex] == '#' && format_string[startIndex+1] == '.'))
 		return 0;
 
+	int formatIndex = 0;
+	int result = 0;
+
 	for (int i = startIndex + 2; i < strlen(format_string); i++) {
 		if (!isdigit(format_string[i]) && format_string[i] != 'k') {
-			return 0;
+			break;
 		}
 
 		if (i > startIndex + 2 && format_string[i] == 'k') {
-			return 1;
+			result = 1;
+			break;
 		}
+
+		formatNumber[formatIndex] = format_string[i];
+		formatIndex++;
 	}
 
-	return 0;
+	formatNumber[formatIndex] = '\0';
+
+	return result;
 }
 
 int is_length_minimum_printf(char *format_string, int startIndex, char *formatNumber) {
@@ -45,18 +55,18 @@ int is_length_minimum_printf(char *format_string, int startIndex, char *formatNu
 
 int my_printf(char *format_string, char *param){
 	for(int i=0;i<strlen(format_string);i++){
-		char format[10];
-		char formatNumber[10];
+		char format[53];
+		char formatNumber[50];
 
 		if((format_string[i] == '#') && (format_string[i+1] == 'k')){
 			i += 2;
 			printf("%s",param);
 		} 
 		
-		if (is_length_limit_printf(format_string, i)) {
-			sprintf(format, "%%.%cs", format_string[i+2]);
+		if (is_length_limit_printf(format_string, i, formatNumber)) {
+			sprintf(format, "%%.%ss", formatNumber);
 			printf(format, param);
-			i += 3;
+			i += strlen(formatNumber) + 2;
 		} else if (is_length_minimum_printf(format_string, i, formatNumber)) {
 			sprintf(format, "%%%ss", formatNumber);
 			printf(format, param);
