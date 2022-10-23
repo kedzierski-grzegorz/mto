@@ -32,3 +32,9 @@ Test #123k tEST
 test16
 Test #.11k tEST
 test17test17
+#1.23k
+test18
+#2.k
+test19
+#5 k
+test20
