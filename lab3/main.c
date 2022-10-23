@@ -18,16 +18,40 @@ int is_length_limit_printf(char *format_string, int startIndex) {
 	return 0;
 }
 
+int is_length_minimum_printf(char *format_string, int startIndex) {
+	if (!(format_string[startIndex] == '#' && isdigit(format_string[startIndex+1])))
+		return 0;
+
+	for (int i = startIndex + 1; i < strlen(format_string); i++) {
+		if (!isdigit(format_string[i]) && format_string[i] != 'k') {
+			return 0;
+		}
+
+		if (i > startIndex + 1 && format_string[i] == 'k') {
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
 int my_printf(char *format_string, char *param){
 	for(int i=0;i<strlen(format_string);i++){
 		if((format_string[i] == '#') && (format_string[i+1] == 'k')){
 			i += 2;
 			printf("%s",param);
-		} if (is_length_limit_printf(format_string, i)) {
+		} 
+		
+		if (is_length_limit_printf(format_string, i)) {
 			char format[5];
 			sprintf(format, "%%.%cs", format_string[i+2]);
 			printf(format, param);
 			i += 3;
+		} else if (is_length_minimum_printf(format_string, i)) {
+			char format[5];
+			sprintf(format, "%%%cs", format_string[i+1]);
+			printf(format, param);
+			i += 2;
 		} else {
 			if (isalpha(format_string[i])) {
 				if (format_string[i] >= 65 && format_string[i] <= 90) {
