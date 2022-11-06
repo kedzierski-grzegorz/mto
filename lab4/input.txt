@@ -18,3 +18,13 @@ rwrewrew #g
 232323425111334
 #g
 1
+test11 # g
+1234
+test12 g#
+32
+test13 ##g
+4321
+#tgest14
+23
+te#gst15
+91
