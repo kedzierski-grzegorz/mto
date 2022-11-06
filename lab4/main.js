@@ -4,6 +4,11 @@ process.stdin.setEncoding('utf8');
 
 var lingeringLine = "";
 
+function reverseNumber(number) {
+	const reversedNumber = number.toString().replace('-','').split('').reverse().join('');
+	return parseInt(reversedNumber) * (number < 0 ? -1 : 1);
+}
+
 function my_printf(format_string,param){
 	for(var i=0;i<format_string.length;i++){
 		if((format_string.charAt(i) == '#') && (format_string.charAt(i+1) == 'k')){
@@ -11,8 +16,7 @@ function my_printf(format_string,param){
 			i++;
 		} else if ((format_string.charAt(i) == '#') && (format_string.charAt(i+1) == 'g')) {
 			const number = parseInt(param);
-			const reversedNumber = number.toString().replace('-','').split('').reverse().join('');
-			process.stdout.write((number < 0 ? '-' : '') + reversedNumber);
+			process.stdout.write(reverseNumber(number).toString());
 			i++;
 		} else {
 			process.stdout.write(format_string.charAt(i));
