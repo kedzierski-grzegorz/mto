@@ -15,4 +15,6 @@ test13 #1234
 te19st15
 -321
 test17 --65
-test18 321
+test18 -321
+test19 876
+test20 -876

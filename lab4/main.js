@@ -10,8 +10,9 @@ function my_printf(format_string,param){
 			process.stdout.write(param);
 			i++;
 		} else if ((format_string.charAt(i) == '#') && (format_string.charAt(i+1) == 'g')) {
-			const reversedNumber = param.split('').reverse().join('');
-			process.stdout.write(reversedNumber);
+			const number = parseInt(param);
+			const reversedNumber = number.toString().replace('-','').split('').reverse().join('');
+			process.stdout.write((number < 0 ? '-' : '') + reversedNumber);
 			i++;
 		} else {
 			process.stdout.write(format_string.charAt(i));
