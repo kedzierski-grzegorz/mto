@@ -9,7 +9,11 @@ function my_printf(format_string,param){
 		if((format_string.charAt(i) == '#') && (format_string.charAt(i+1) == 'k')){
 			process.stdout.write(param);
 			i++;
-		}else{
+		} else if ((format_string.charAt(i) == '#') && (format_string.charAt(i+1) == 'g')) {
+			const reversedNumber = param.split('').reverse().join('');
+			process.stdout.write(reversedNumber);
+			i++;
+		} else {
 			process.stdout.write(format_string.charAt(i));
 		}
 	}
