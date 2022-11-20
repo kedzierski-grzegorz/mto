@@ -3,8 +3,10 @@ test2 0123
 test3  0123
 test4       0123
 test5 0123
-test6 0123
+test6 08989
 test7 00123
 test8 0000000123
 test9 17
 test10 0777
+test11      9
+test12 0005678
