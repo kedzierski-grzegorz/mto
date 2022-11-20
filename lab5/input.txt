@@ -1,48 +1,20 @@
-totafsdfsf #k fdsfsdf
-test
-totafsd#k fdsfsdf fdfjs
-test2
-jfldjfldk # wynik
-test3
-fjdfsfds # k alal
-test4
-djfjkldsjf #k jjjjjj fsfjdljfdlsj flj ldfj
-test5
-gjjkdsljflds #g jdlkfjdslf
+test1 #1g
 1234
- #g tttttt
-45162111
-#g
-57
-rwrewrew #g
-232323425111334
-#g
-1
-test11 # g
+test2 #4g
 1234
-test12 g#
-32
-test13 ##g
-4321
-#tgest14
-23
-te#gst15
-91
-#g
--123
-test17 -#g test17
--56
-test18 #g test18
--123
-test19 #g 
-000678
-test20 #g test20
--000678
-test21 #g
-0000
-test22 #g
--0000
-test#g
--032-
-test2#g4
-0042
+test3 #5g
+1234
+test4 #10g
+1234
+test5 #0g
+1234
+test6 #-2g
+1234
+test7 #05g
+1234
+test8 #010g
+1234
+test9 #2g
+28
+test10 #04g
+888

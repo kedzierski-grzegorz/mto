@@ -1,24 +1,10 @@
-totafsdfsf test fdsfsdf
-totafsdtest2 fdsfsdf fdfjs
-jfldjfldk # wynik
-fjdfsfds # k alal
-djfjkldsjf test5 jjjjjj fsfjdljfdlsj flj ldfj
-gjjkdsljflds 4321 jdlkfjdslf
- 11126154 tttttt
-75
-rwrewrew 433111524323232
-1
-test11 # g
-test12 g#
-test13 #1234
-#tgest14
-te19st15
--321
-test17 --65 test17
-test18 -321 test18
-test19 876 
-test20 -876 test20
-test21 0
-test22 0
-test-23
-test2244
+test1 #1g
+test2 #4g
+test3 #5g
+test4 #10g
+test5 #0g
+test6 #-2g
+test7 #05g
+test8 #010g
+test9 #2g
+test10 #04g
