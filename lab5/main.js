@@ -34,6 +34,36 @@ function isPrintfXg(format_string, startIndex) {
 	return result ? formatNumber : '';
 }
 
+function printfXg(number, format) {
+	const spaceChar = format[0] === '0' ? '0' : ' ';
+
+	if (format[0] === '0') {
+		format.substring(1);
+	}
+
+	var numberText = number.toString();
+	var formattedNumber = '';
+
+	for (var i = 0; i < numberText.length; i++) {
+		var n = parseInt(numberText[i]);
+		if (n === 0) {
+			n = 9;
+		} else {
+			n -= 1;
+		}
+		formattedNumber += n.toString();
+	}
+
+	const formatNumber = Number(format);
+	var numberOfNewSpaces = formatNumber - formattedNumber.length;
+
+	for (var i = 0; i < numberOfNewSpaces; i++) {
+		formattedNumber = spaceChar + formattedNumber;
+	}
+
+	return formattedNumber;
+}
+
 function isNumber(char) {
 	if (typeof char !== 'string') {
 	  return false;
@@ -58,7 +88,8 @@ function my_printf(format_string,param){
 			process.stdout.write(reverseNumber(number).toString());
 			i++;
 		} else if (printfXgFormat) {
-			process.stdout.write(printfXgFormat);
+			const number = parseInt(param);
+			process.stdout.write(printfXg(number, printfXgFormat));
 			i += printfXgFormat.length + 1;
 		} else {
 			process.stdout.write(format_string.charAt(i));
