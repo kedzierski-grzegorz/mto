@@ -1,0 +1,24 @@
+test1 #1g
+1234
+test2 #4g
+1234
+test3 #5g
+1234
+test4 #10g
+1234
+test5 #0g
+1234
+test6 #05g
+9090
+test7 #05g
+1234
+test8 #010g
+1234
+test9 #2g
+28
+test10 #04g
+888
+test11 #6g
+0000
+test12 #007g
+6789
