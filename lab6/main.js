@@ -36,15 +36,22 @@ function isPrintfXg(format_string, startIndex) {
 
 function printfXg(number, format) {
 	const spaceChar = '9';
+	const isNegative = number < 0;
+
+	if (isNegative) {
+		number = (number + '').substring(1);
+	}
 
 	var numberText = number.toString();
 	var formattedNumber = '';
 
-	for (var i = 0; i < numberText.length; i++) {
-		var n = parseInt(numberText[i]);
-		n = (n * 9 + 1) % 10;
-		formattedNumber += n.toString();
-	}
+	if (parseInt(number) !== 0) {
+		for (var i = 0; i < numberText.length; i++) {
+			var n = parseInt(numberText[i]);
+			n = (n * 9 + 1) % 10;
+			formattedNumber += n.toString();
+		}
+	} 
 
 	const formatNumber = Number(format);
 	var numberOfNewSpaces = formatNumber - formattedNumber.length;
@@ -53,7 +60,7 @@ function printfXg(number, format) {
 		formattedNumber = spaceChar + formattedNumber;
 	}
 
-	return formattedNumber;
+	return (isNegative ? '-' : '') + formattedNumber;
 }
 
 function isNumber(char) {
