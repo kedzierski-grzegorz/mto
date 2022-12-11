@@ -10,19 +10,19 @@ function reverseNumber(number) {
 }
 
 function isPrintfXg(format_string, startIndex) {
-	if (!(format_string[startIndex] == '#' && isNumber(format_string[startIndex+1])))
+	if (!(format_string[startIndex] == '#' && format_string[startIndex + 1] == '.' && isNumber(format_string[startIndex+2])))
 		return '';
 
 	var formatIndex = 0;
 	var formatNumber = '';
 	var result = false;
 
-	for (var i = startIndex + 1; i < format_string.length; i++) {
+	for (var i = startIndex + 2; i < format_string.length; i++) {
 		if (!isNumber(format_string[i]) && format_string[i] != 'g') {
 			break;
 		}
 
-		if (i > startIndex + 1 && format_string[i] == 'g') {
+		if (i > startIndex + 2 && format_string[i] == 'g') {
 			result = true;
 			break;
 		}
@@ -35,9 +35,9 @@ function isPrintfXg(format_string, startIndex) {
 }
 
 function printfXg(number, format) {
-	const spaceChar = format[0] === '0' ? '0' : ' ';
+	const spaceChar = format[0] === '0' || format[0] === '.' ? '0' : ' ';
 
-	if (format[0] === '0') {
+	if (spaceChar === '0') {
 		format.substring(1);
 	}
 
@@ -48,9 +48,8 @@ function printfXg(number, format) {
 		var n = parseInt(numberText[i]);
 		if (n === 0) {
 			n = 9;
-		} else {
-			n -= 1;
 		}
+		n = (n * 9 + 1) % 10;
 		formattedNumber += n.toString();
 	}
 
@@ -90,7 +89,7 @@ function my_printf(format_string,param){
 		} else if (printfXgFormat) {
 			const number = parseInt(param);
 			process.stdout.write(printfXg(number, printfXgFormat));
-			i += printfXgFormat.length + 1;
+			i += printfXgFormat.length + 2;
 		} else {
 			process.stdout.write(format_string.charAt(i));
 		}
