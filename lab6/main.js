@@ -35,17 +35,13 @@ function isPrintfXg(format_string, startIndex) {
 }
 
 function printfXg(number, format) {
-	const spaceChar = '0';
+	const spaceChar = '9';
 
 	var numberText = number.toString();
 	var formattedNumber = '';
 
 	for (var i = 0; i < numberText.length; i++) {
 		var n = parseInt(numberText[i]);
-		if (n === 0) {
-			n = 9;
-		}
-
 		n = (n * 9 + 1) % 10;
 		formattedNumber += n.toString();
 	}
