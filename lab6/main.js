@@ -35,11 +35,7 @@ function isPrintfXg(format_string, startIndex) {
 }
 
 function printfXg(number, format) {
-	const spaceChar = format[0] === '0' || format[0] === '.' ? '0' : ' ';
-
-	if (spaceChar === '0') {
-		format.substring(1);
-	}
+	const spaceChar = '0';
 
 	var numberText = number.toString();
 	var formattedNumber = '';
@@ -49,6 +45,7 @@ function printfXg(number, format) {
 		if (n === 0) {
 			n = 9;
 		}
+
 		n = (n * 9 + 1) % 10;
 		formattedNumber += n.toString();
 	}

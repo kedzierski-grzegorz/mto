@@ -1,7 +1,7 @@
 test1 #.1g
 4378
-test2 #.4g
-1234
+test2 #.8g
+4378
 test3 #.5g
 1234
 test4 #.10g
