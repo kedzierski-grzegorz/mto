@@ -18,3 +18,11 @@ test9 #j
 234
 test10 #j
 4533
+test11 #j
+10.234
+test12 #j
+0
+test13 #j
+0.623
+test14 #j
+9473.234

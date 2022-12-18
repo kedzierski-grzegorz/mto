@@ -8,3 +8,7 @@ test7 k
 test8 l
 test9 kg
 test10 11h5
+test11 g
+test12 0
+test13 0
+test14 2501
