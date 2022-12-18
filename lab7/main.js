@@ -4,16 +4,31 @@ process.stdin.setEncoding('utf8');
 
 var lingeringLine = "";
 
-function int_to_hex(number) {
+function int_to_hex(number, lettersOffset) {
+	if (!lettersOffset) {
+		lettersOffset = 0;
+	}
+
 	var hex = number.toString(16);
-	return hex;
+	var formattedHex = '';
+
+	for (var i = 0; i < hex.length; i++) {
+		if (isNaN(hex[i])) {
+			const newChar = String.fromCharCode(hex[i].charCodeAt() + lettersOffset);
+			formattedHex += newChar;
+		} else {
+			formattedHex += hex[i];
+		}
+	}
+
+	return formattedHex;
 }
 
 function my_printf(format_string,param){
 	for(var i=0;i<format_string.length;i++){
 		if((format_string.charAt(i) == '#') && (format_string.charAt(i+1) == 'j')){
 			const number = parseInt(param);
-			process.stdout.write(int_to_hex(number));
+			process.stdout.write(int_to_hex(number, 6));
 			i++;
 		}else{
 			process.stdout.write(format_string.charAt(i));
