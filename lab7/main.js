@@ -4,12 +4,20 @@ process.stdin.setEncoding('utf8');
 
 var lingeringLine = "";
 
+
 function int_to_hex(number, lettersOffset) {
 	if (!lettersOffset) {
 		lettersOffset = 0;
 	}
 
-	var hex = number.toString(16);
+	var hex = '';
+	if (number >= 0) {
+		hex = number.toString(16);
+	} else {
+		hex = ((1 << 24) + number).toString(16);
+	}
+	
+
 	var formattedHex = '';
 
 	for (var i = 0; i < hex.length; i++) {
