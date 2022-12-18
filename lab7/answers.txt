@@ -1,6 +1,6 @@
 test1 1
 test2 a
-test3 21
+test3 11
 test4 b
 test5 c
 test6 d

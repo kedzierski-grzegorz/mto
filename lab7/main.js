@@ -4,10 +4,16 @@ process.stdin.setEncoding('utf8');
 
 var lingeringLine = "";
 
+function int_to_hex(number) {
+	var hex = number.toString(16);
+	return hex;
+}
+
 function my_printf(format_string,param){
 	for(var i=0;i<format_string.length;i++){
-		if((format_string.charAt(i) == '#') && (format_string.charAt(i+1) == 'k')){
-			process.stdout.write(param);
+		if((format_string.charAt(i) == '#') && (format_string.charAt(i+1) == 'j')){
+			const number = parseInt(param);
+			process.stdout.write(int_to_hex(number));
 			i++;
 		}else{
 			process.stdout.write(format_string.charAt(i));
