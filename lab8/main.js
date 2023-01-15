@@ -4,6 +4,30 @@ process.stdin.setEncoding('utf8');
 
 var lingeringLine = "";
 
+function isPrintfXj(format_string, startIndex) {
+	if (!(format_string[startIndex] == '#' && format_string[startIndex + 1] == '.' && isNumber(format_string[startIndex+2])))
+		return '';
+
+	var formatIndex = 0;
+	var formatNumber = '';
+	var result = false;
+
+	for (var i = startIndex + 2; i < format_string.length; i++) {
+		if (!isNumber(format_string[i]) && format_string[i] != 'j') {
+			break;
+		}
+
+		if (i > startIndex + 2 && format_string[i] == 'j') {
+			result = true;
+			break;
+		}
+
+		formatNumber += format_string[i] + '';
+		formatIndex++;
+	}
+
+	return result ? formatNumber : '';
+}
 
 function int_to_hex(number, lettersOffset) {
 	if (!lettersOffset) {
@@ -32,13 +56,44 @@ function int_to_hex(number, lettersOffset) {
 	return formattedHex;
 }
 
+function int_to_hex_ext(number, lettersOffset, z) {
+	var hexNumber = int_to_hex(number, lettersOffset);
+
+	var zNumber = isNumber(z) ? Number(z) : 0;
+	var numberOfNewSpaces = zNumber - hexNumber.length;
+
+	for (var i = 0; i < numberOfNewSpaces; i++) {
+		hexNumber = '0' + hexNumber;
+	}
+
+	return hexNumber;
+}
+
+function isNumber(char) {
+	if (typeof char !== 'string') {
+	  return false;
+	}
+  
+	if (char.trim() === '') {
+	  return false;
+	}
+  
+	return !isNaN(char);
+}
+
 function my_printf(format_string,param){
 	for(var i=0;i<format_string.length;i++){
+		var printfXjFormat = isPrintfXj(format_string, i);
+
 		if((format_string.charAt(i) == '#') && (format_string.charAt(i+1) == 'j')){
 			const number = parseInt(param);
 			process.stdout.write(int_to_hex(number, 6));
 			i++;
-		}else{
+		} else if (printfXjFormat) {
+			const number = parseInt(param);
+			process.stdout.write(int_to_hex_ext(number, 6, printfXjFormat));
+			i += printfXjFormat.length + 2;
+		} else{
 			process.stdout.write(format_string.charAt(i));
 		}
 	}
