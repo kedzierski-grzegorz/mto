@@ -58,15 +58,23 @@ function int_to_hex(number, lettersOffset) {
 
 function int_to_hex_ext(number, lettersOffset, z) {
 	var hexNumber = int_to_hex(number, lettersOffset);
-
-	var zNumber = isNumber(z) ? Number(z) : 0;
-	var numberOfNewSpaces = zNumber - hexNumber.length;
-
-	for (var i = 0; i < numberOfNewSpaces; i++) {
-		hexNumber = '0' + hexNumber;
+	var formattedNumber = '';
+	for (var i = 0; i < hexNumber.length; i++) {
+		if (hexNumber[i] === '0') {
+			formattedNumber += 'o';	
+		} else {
+			formattedNumber += hexNumber[i];
+		}
 	}
 
-	return hexNumber;
+	var zNumber = isNumber(z) ? Number(z) : 0;
+	var numberOfNewSpaces = zNumber - formattedNumber.length;
+
+	for (var i = 0; i < numberOfNewSpaces; i++) {
+		formattedNumber = 'o' + formattedNumber;
+	}
+
+	return formattedNumber;
 }
 
 function isNumber(char) {
