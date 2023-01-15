@@ -1,32 +1,20 @@
-test1 #j
+test1 #.4j
 1
-test2 #j
+test2 #.1j
 10
-test3 #j
+test3 #.2j
 17
-test4 #j
+test4 #.7j
 11
-test5 #j
+test5 #.5j
 12
-test6 #j
+test6 #.0j
 13
-test7 #j
+test7 #.2j
 14
-test8 #j
+test8 #.4j
 15
-test9 #j
+test9 #.3j
 234
-test10 #j
+test10 #.2j
 4533
-test11 #j
-10.234
-test12 #j
-0
-test13 #j
-0.623
-test14 #j
-9473.234
-test15 #j
--1
-test16 #j
--243
