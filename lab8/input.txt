@@ -1,0 +1,32 @@
+test1 #j
+1
+test2 #j
+10
+test3 #j
+17
+test4 #j
+11
+test5 #j
+12
+test6 #j
+13
+test7 #j
+14
+test8 #j
+15
+test9 #j
+234
+test10 #j
+4533
+test11 #j
+10.234
+test12 #j
+0
+test13 #j
+0.623
+test14 #j
+9473.234
+test15 #j
+-1
+test16 #j
+-243
